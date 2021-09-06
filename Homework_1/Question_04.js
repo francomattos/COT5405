@@ -1,3 +1,10 @@
+/*
+Define maximum partial sum problem (MPS) as follows. Given an array A[1,n] of integers, 
+and values of i and j with 1≤i ≤j≤n such that A[i]+A[i+1]+A[i+2]+...+A[j] is maximized. 
+For example, for the array [3,-5,6,7,8,-10,7], the solution to MPS is i = 3 and j = 5 (sum is 21). 
+Design an O(n log n) time algorithm. [Hint: Divide and Conquer approach]. Can you improve the time complexity to O(n). 
+*/
+
 const maximum_partial_sum = (array_values) => {
   // Result object, to keep track of values
   let result = {
