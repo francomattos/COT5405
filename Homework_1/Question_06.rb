@@ -33,6 +33,6 @@ num_array = [[1,  2,  5,	7,	12],
              [24,	29,	34,	38,	57],
              [25,	30,	37,	39,	58]]
 
-given_number = 33
+given_number = 11
 
 puts search_2d(num_array, given_number)

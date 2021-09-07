@@ -13,18 +13,25 @@ Can you help Cinderella to nd an algorithm requiring only o(n2) comparisons? For
 
 
 def find_largest_match(nuts, bolts):
+    # Starting with first nut and bolt.
     index_nuts = 0
     index_bolts = 0
     match = {
         "nut": 0,
         "bolt": 0
     }
+
+    # Go through nuts and bolts but stop when you get to last one.
     while index_nuts < len(nuts) and index_bolts < len(bolts):
+
+        # If one is smaller than the other.
+        # Set aside the smallest item and pick up another one
         if nuts[index_nuts] < bolts[index_bolts]:
             index_nuts += 1
         elif bolts[index_bolts] < nuts[index_nuts]:
             index_bolts += 1
         else:
+            # If they are equal, mark as the match, set aside the nut and pick up another
             match = {
                 "nut": nuts[index_nuts],
                 "bolt": bolts[index_bolts]
@@ -34,7 +41,8 @@ def find_largest_match(nuts, bolts):
     return match
 
 
-nuts = [0, 1, 2, 3, 4, 5, 6, 7, 12, 8, 16, 9, 10, 14]
-bolts = [8, 7, 6, 12, 5, 16, 9, 10, 14, 4, 3, 2, 1, 0]
+if __name__ == "__main__":
+    nuts = [0, 1, 2, 3, 4, 5, 6, 15, 7, 12, 8, 16, 9, 10, 14]
+    bolts = [8, 7, 6, 12, 5, 16, 9, 10, 15, 14, 4, 3, 2, 1, 0]
 
-print(find_largest_match(nuts, bolts))
+    print(find_largest_match(nuts, bolts))
