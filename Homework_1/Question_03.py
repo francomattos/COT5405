@@ -14,11 +14,12 @@ import random
 
 
 def case_1(binary_array, array_length):
-    if array_length == 2:
-        if binary_array[0][-1] == binary_array[1][-1]:
-            missing_number = int(binary_array[0], 2) + 1
-            print(f"missing number is {missing_number}")
-            return 0
+    print(f"binary_array {binary_array}")
+    # if array_length == 2:
+    #     if binary_array[0][-1] == binary_array[1][-1]:
+    #         missing_number = int(binary_array[0], 2) + 1
+    #         print(f"missing number is {missing_number}")
+    #         return 0
 
     midpoint = math.floor(array_length / 2)
     mid_bit = midpoint % 2
@@ -28,22 +29,23 @@ def case_1(binary_array, array_length):
 
     if binary_array[midpoint][-1] == str(mid_bit):
         print("Side: right")
-        binary_array = binary_array[midpoint + 1:]
-        array_length = len(binary_array)
-        print(f"binary_array {binary_array}")
-        if array_length == 1:
-            result = int(binary_array[0], 2) + 1
-            print(result)
-            return 0
-    else:
-        print("Side: left")
-        binary_array = binary_array[:midpoint]
-        array_length = len(binary_array)
-        print(f"binary_array {binary_array}")
         if array_length == 1:
             result = int(binary_array[0], 2) - 1
-            print(result)
-            return 0
+            return result       
+
+        binary_array = binary_array[midpoint + 1:]
+        array_length = len(binary_array)
+
+
+    else:
+        print("Side: left")
+        if array_length == 1:
+            result = int(binary_array[0], 2) + 1
+            return result
+        binary_array = binary_array[:midpoint]
+        array_length = len(binary_array)
+
+
 
     return case_1(binary_array, array_length)
 
@@ -58,18 +60,21 @@ if __name__ == "__main__":
     binary_array = [format(0, "b"), format(1, "b"), format(2, "b"), format(3, "b"),
                     format(4, "b"), format(5, "b"), format(
                         6, "b"), format(7, "b"),
-                    format(8, "b"), format(9, "b"), format(10, "b")]
+                    format(8, "b"), format(9, "b"), format(10, "b"), format(11, "b"), format(12, "b")]
 
     # Remove some value from list
-    binary_array.remove(format(7, "b"))
+    binary_array.remove(format(1, "b"))
     array_length = len(binary_array)
+
 
     # 1) Case where it is sorted:
     result = case_1(binary_array, array_length)
+    print(result)
 
-    # 2) Case of unsorted
-    # Format makes a binary string in python where the most significant bit is always 1
-    # Except for the case of 0
-    # We can use to check the most significant bit by means of length of the string
-    random.shuffle(binary_array)
-    most_significant_bit = math.ceil(math.log(array_length, 2))
+
+    # # 2) Case of unsorted
+    # # Format makes a binary string in python where the most significant bit is always 1
+    # # Except for the case of 0
+    # # We can use to check the most significant bit by means of length of the string
+    # random.shuffle(binary_array)
+    # most_significant_bit = math.ceil(math.log(array_length, 2))
