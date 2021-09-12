@@ -6,9 +6,9 @@ These bolts and nuts have the same appearance so that we cannot distinguish a bo
 or a nut from another nut, just by looking at them. 
 Fortunately, we can compare a bolt with a nut by screwing them together, to see if the size of the bolt is too large, 
 or just fitting, or too small, for the nut. Cinderella wants to join the ball held by Prince Charming. 
-But now, her wicked stepmother has mixed the bolts, and mixed the nuts, and tells her that she can go to the ball unless she can nd the largest bolt 
+But now, her wicked stepmother has mixed the bolts, and mixed the nuts, and tells her that she can go to the ball unless she can find the largest bolt 
 and the largest nut in time. An obvious way is to compare each bolt with each nut, but that will take n2 comparisons (which is too long). 
-Can you help Cinderella to nd an algorithm requiring only o(n2) comparisons? For instance, O(n) comparisons?
+Can you help Cinderella to find  an algorithm requiring only o(n2) comparisons? For instance, O(n) comparisons?
 '''
 
 

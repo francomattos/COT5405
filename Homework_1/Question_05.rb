@@ -5,14 +5,16 @@
 def swap_sum(arrX, arrY, sumX, sumY)
   # Find the difference between the sums
   difference = (sumY - sumX)
+  if difference % 2 != 0 then
+    puts "Impossible result due to uneven solution"
+    return 0
+  end
   hash = {}
 
   # Go through every value in array X, save the y value that would allow a swap to happen.
   arrX.each_index do |index_x|
-    int_var = (2 * arrX[index_x] + difference)
-    if (int_var % 2 ) == 0 then
-      hash[int_var / 2] = index_x
-    end
+    theoretical_y = (2 * arrX[index_x] + difference) / 2
+      hash[theoretical_y] = index_x
   end
 
   # Go through every value in array Y, if it matches a value needed for X then print solution
@@ -23,12 +25,11 @@ def swap_sum(arrX, arrY, sumX, sumY)
   end
 end
 
-# Answer 2 & 3
-arrX = [9, 2, 8, 11, 3]
-arrY = [6, 3, 5, 20, 1]
+# Case 1, basic
+arrX = [5, 4, 7, 6, 8, 3]
+arrY = [4, 5, 9, 2, 7, 4]
 sumX = 33
-sumY = 35
-
+sumY = 31
 
 swap_sum(arrX, arrY, sumX, sumY)
 
@@ -43,6 +44,12 @@ swap_sum(arrX, arrY, sumX, sumY)
 # arrY = [2, 3, 4]
 # sumX = 6
 # sumY = 9
+
+# # Case 3
+# arrX = [9, 2, 8, 11, 3]
+# arrY = [6, 3, 5, 20, 1]
+# sumX = 33
+# sumY = 35
 
 # # Case 4, no solution
 # arrX = [7, 34, 8, 32]

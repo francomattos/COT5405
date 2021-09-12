@@ -14,11 +14,12 @@ def select_element(number_array, kth_values):
             result.append(number_array[index - 1])
         return result
 
+    # Fetches the median of median for current array block.
     median = get_median_of_medians(number_array)
     array_small = []
     array_large = []
 
-    # Creates two arrays with pivot point as median. Does not add median to array
+    # Creates two arrays with pivot point as median. Does not add median to array.
     for value in number_array:
         if value < median:
             array_small.append(value)
@@ -27,15 +28,15 @@ def select_element(number_array, kth_values):
 
     large_kth_values = []
 
-    # Iterates descending through kth values while they are smaller than the length of small array
+    # Iterates descending through kth values while they are smaller than the length of small array.
     while kth_values and len(array_small) < kth_values[-1]:
 
-        # If median is in kth position, add it to result
+        # If median is in kth position, add it to result.
         if len(array_small) + 1 == kth_values[-1]:
             kth_values.pop()
             result.append(median)
         else:
-            # We are discarting median, so we create large_kth_values array subtracting array small + 1 to account for median
+            # We are discarting median, so we create large_kth_values array subtracting array small + 1 to account for median.
             large_kth_values.insert(
                 0, kth_values.pop() - (len(array_small) + 1))
 
@@ -47,9 +48,8 @@ def select_element(number_array, kth_values):
 
     return result
 
+
 # Function to create median of medians
-
-
 def get_median_of_medians(array_values):
     index = 0
     medians = []
@@ -65,18 +65,19 @@ def get_median_of_medians(array_values):
 
 
 if __name__ == "__main__":
-    # randomized list of a sequence of 50 integers
+    # randomized list of a sequence of n integers.
     number_array = [5, 2, 8, 4, 1, 6, 7, 3, 9, 19, 15, 11, 12, 18, 14, 20, 16]
 
-    # Finds largest exponent that fits into number of n value
+    # Finds largest exponent that fits into number of n value.
     largest_exponent = math.floor(math.log(len(number_array), 2))
 
-    # generate kth values array
+    # Generate kth values array.
     kth_values = []
 
     for exponent in range(largest_exponent + 1):
         kth_values.append(round(math.pow(2, exponent)))
 
+    # Begin the recursion process.
     result = select_element(number_array, kth_values)
     result.sort()
 

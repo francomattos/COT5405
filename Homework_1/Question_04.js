@@ -28,10 +28,8 @@ const maximum_partial_sum = (array_values) => {
         j: j,
         max_partial_sum: running_sum,
       };
-    }
-
-    // If adding current value makes running sum negative.
-    if (running_sum < 0) {
+    } else if (running_sum < 0) {
+      // If adding current value makes running sum negative.
       // We reset.
       curr_i = j + 1;
       running_sum = 0;
